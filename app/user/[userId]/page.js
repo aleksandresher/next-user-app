@@ -1,5 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
+import { RotatingLines } from "react-loader-spinner";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,28 +34,38 @@ export default function oneUser() {
   }, []);
   return (
     <div className="py-10 px-20 flex flex-col items-center">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>City</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>{user?.name}</TableCell>
-            <TableCell>{user?.email}</TableCell>
-            <TableCell>{user?.address.city}</TableCell>
-            <TableCell className="text-right">
-              <Link href={`/`}>
-                {" "}
-                <Button>Back</Button>
-              </Link>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      {user ? (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>City</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>{user?.name}</TableCell>
+              <TableCell>{user?.email}</TableCell>
+              <TableCell>{user?.address.city}</TableCell>
+              <TableCell className="text-right">
+                <Link href={`/`}>
+                  {" "}
+                  <Button>Back</Button>
+                </Link>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      ) : (
+        <RotatingLines
+          strokeColor="green"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="96"
+          visible={true}
+        />
+      )}
     </div>
   );
 }
