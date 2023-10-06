@@ -84,8 +84,8 @@ function DeleteBtn({ id }) {
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             {!loading ? (
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
+                This action cannot be undone. This will permanently delete user
+                from our servers.
               </AlertDialogDescription>
             ) : (
               <RotatingLines
